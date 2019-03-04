@@ -11,6 +11,7 @@ services:
     links:
       - backend
       - search
+      - actions
   backend:
     build: ./backend
     container_name: backend
@@ -29,3 +30,12 @@ services:
     environment:
       NODE_ENV: development
       PORT: 8081
+  actions:
+    build: ./actions
+    container_name: actions
+    command: node server
+    ports:
+      - "8082:8082"
+    environment:
+      NODE_ENV: development
+      PORT: 8082
