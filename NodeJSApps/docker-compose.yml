@@ -45,19 +45,26 @@ services:
       NODE_ENV: development
       PORT: 8082
   elasticsearch:
-    build: ./elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.1
     container_name: elasticsearch
     ports:
       - 9200:9200
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.6.1
+    container_name: kibana
+    ports: 
+      - 5601:5601
     links:
-      - mssql
+      - elasticsearch
   mssql:
     image: microsoft/mssql-server-linux:latest
     container_name: mssql
     ports:
       - 1433:1433
     volumes:
-      - /var/opt/mssql
+      - ./mssql/data:/var/opt/mssql
       - ./mssql:/usr/src/app
     working_dir: /usr/src/app
     command: sh -c ' chmod +x ./start.sh; ./start.sh & /opt/mssql/bin/sqlservr;'
