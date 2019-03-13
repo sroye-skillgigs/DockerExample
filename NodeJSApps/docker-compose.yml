@@ -17,30 +17,27 @@ services:
     container_name: backend
     command: node server
     ports:
-      - 8080:8080
+      - 8080
     environment: 
       NODE_ENV: development
       PORT: 8080
-    links:
-      - mssql
   search:
     build: ./search
     container_name: search
     command: node server
     ports: 
-      - 8081:8081
+      - 8081
     environment:
       NODE_ENV: development
       PORT: 8081
     links:
       - elasticsearch
-      - mssql
   actions:
     build: ./actions
     container_name: actions
     command: node server
     ports:
-      - 8082:8082
+      - 8082
     environment:
       NODE_ENV: development
       PORT: 8082
@@ -58,16 +55,3 @@ services:
       - 5601:5601
     links:
       - elasticsearch
-  mssql:
-    image: microsoft/mssql-server-linux:latest
-    container_name: mssql
-    ports:
-      - 1433:1433
-    volumes:
-      - ./mssql/data:/var/opt/mssql
-      - ./mssql:/usr/src/app
-    working_dir: /usr/src/app
-    command: sh -c ' chmod +x ./start.sh; ./start.sh & /opt/mssql/bin/sqlservr;'
-    environment:
-      ACCEPT_EULA: 'Y'
-      SA_PASSWORD: Remoting1041!

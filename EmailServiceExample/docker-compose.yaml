@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  email:
+    image: sroye98/micro.service.email
+    ports:
+      - 80:3000
