@@ -1,0 +1,27 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+      "name": "skillgigs-talent",
+      "namespace": "default",
+      "labels": {
+        "k8s-app": "skillgigs-talent"
+      }
+    },
+    "spec": {
+      "ports": [
+        {
+          "name": "tcp-80-3003-t2fzw",
+          "protocol": "TCP",
+          "port": 80,
+          "targetPort": 3003
+        }
+      ],
+      "selector": {
+        "k8s-app": "skillgigs-talent"
+      },
+      "type": "LoadBalancer",
+      "sessionAffinity": "None",
+      "externalTrafficPolicy": "Cluster"
+    }
+  }

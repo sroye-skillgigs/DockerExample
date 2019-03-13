@@ -1,0 +1,27 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+      "name": "skillgigs-emp",
+      "namespace": "default",
+      "labels": {
+        "k8s-app": "skillgigs-emp"
+      }
+    },
+    "spec": {
+      "ports": [
+        {
+          "name": "tcp-80-3002-t2fzw",
+          "protocol": "TCP",
+          "port": 80,
+          "targetPort": 3002
+        }
+      ],
+      "selector": {
+        "k8s-app": "skillgigs-emp"
+      },
+      "type": "LoadBalancer",
+      "sessionAffinity": "None",
+      "externalTrafficPolicy": "Cluster"
+    }
+  }

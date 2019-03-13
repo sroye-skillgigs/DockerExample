@@ -1,0 +1,27 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+      "name": "skillgigs-search",
+      "namespace": "default",
+      "labels": {
+        "k8s-app": "skillgigs-search"
+      }
+    },
+    "spec": {
+      "ports": [
+        {
+          "name": "tcp-80-3101-t2fzw",
+          "protocol": "TCP",
+          "port": 80,
+          "targetPort": 3101
+        }
+      ],
+      "selector": {
+        "k8s-app": "skillgigs-search"
+      },
+      "type": "LoadBalancer",
+      "sessionAffinity": "None",
+      "externalTrafficPolicy": "Cluster"
+    }
+  }
