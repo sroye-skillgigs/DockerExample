@@ -15,6 +15,12 @@
           "protocol": "TCP",
           "port": 80,
           "targetPort": 3002
+        },
+        {
+          "name": "tcp-443-3100-tsfzw",
+          "protocol": "TCP",
+          "port": 443,
+          "targetPort": 3002
         }
       ],
       "selector": {
