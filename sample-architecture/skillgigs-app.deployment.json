@@ -35,6 +35,11 @@
               }
             }
           ],
+          "imagePullSecrets": [
+            {
+              "name": "skillgigstech"
+            }
+          ],
           "restartPolicy": "Always",
           "terminationGracePeriodSeconds": 30,
           "dnsPolicy": "ClusterFirst",

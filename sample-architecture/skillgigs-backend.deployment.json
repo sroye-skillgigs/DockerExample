@@ -37,7 +37,7 @@
           ],
           "imagePullSecrets": [
             {
-              "name": "regcred"
+              "name": "skillgigstech"
             }
           ],
           "restartPolicy": "Always",

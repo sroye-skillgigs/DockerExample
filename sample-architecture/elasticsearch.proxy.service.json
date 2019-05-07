@@ -1,0 +1,38 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+      "name": "elasticsearch-proxy",
+      "namespace": "default",
+      "labels": {
+        "k8s-app": "elasticsearch-proxy"
+      },
+      "annotations": {
+        "service.beta.kubernetes.io/aws-load-balancer-backend-protocol": "http",
+        "service.beta.kubernetes.io/aws-load-balancer-ssl-cert": "arn:aws:acm:us-east-1:466101838244:certificate/b5472156-b212-48c5-ae24-83e6a669da96",
+        "service.beta.kubernetes.io/aws-load-balancer-ssl-ports": "443"
+      }
+    },
+    "spec": {
+      "ports": [
+        {
+          "name": "tcp-80-80-t2fzw",
+          "protocol": "TCP",
+          "port": 80,
+          "targetPort": 80
+        },
+        {
+          "name": "tcp-443-80-tsfzw",
+          "protocol": "TCP",
+          "port": 443,
+          "targetPort": 80
+        }
+      ],
+      "selector": {
+        "k8s-app": "elasticsearch-proxy"
+      },
+      "type": "LoadBalancer",
+      "sessionAffinity": "None",
+      "externalTrafficPolicy": "Cluster"
+    }
+  }
