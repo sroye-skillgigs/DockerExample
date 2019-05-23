@@ -2,30 +2,30 @@
   "kind": "Deployment",
   "apiVersion": "extensions/v1beta1",
   "metadata": {
-    "name": "skillgigs-dataacess",
+    "name": "skillgigs-dataaccess",
     "labels": {
-      "k8s-app": "skillgigs-dataacess"
+      "k8s-app": "skillgigs-dataaccess"
     }
   },
   "spec": {
     "replicas": 1,
     "selector": {
       "matchLabels": {
-        "k8s-app": "skillgigs-dataacess"
+        "k8s-app": "skillgigs-dataaccess"
       }
     },
     "template": {
       "metadata": {
-        "name": "skillgigs-dataacess",
+        "name": "skillgigs-dataaccess",
         "labels": {
-          "k8s-app": "skillgigs-dataacess"
+          "k8s-app": "skillgigs-dataaccess"
         }
       },
       "spec": {
         "containers": [
           {
-            "name": "skillgigs-dataacess",
-            "image": "skillgigstech/skillgigs-dataacess-api:v.0.0.0.1",
+            "name": "skillgigs-dataaccess",
+            "image": "skillgigstech/skillgigs-dataaccess-api:v.0.0.0.1",
             "resources": {},
             "terminationMessagePath": "/dev/termination-log",
             "terminationMessagePolicy": "File",

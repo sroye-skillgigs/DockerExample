@@ -2,10 +2,10 @@
   "kind": "Service",
   "apiVersion": "v1",
   "metadata": {
-    "name": "skillgigs-dataacess",
+    "name": "skillgigs-dataaccess",
     "namespace": "default",
     "labels": {
-      "k8s-app": "skillgigs-dataacess"
+      "k8s-app": "skillgigs-dataaccess"
     },
     "annotations": {
       "service.beta.kubernetes.io/aws-load-balancer-backend-protocol": "http",
@@ -29,7 +29,7 @@
       }
     ],
     "selector": {
-      "k8s-app": "skillgigs-dataacess"
+      "k8s-app": "skillgigs-dataaccess"
     },
     "type": "LoadBalancer",
     "sessionAffinity": "None",
