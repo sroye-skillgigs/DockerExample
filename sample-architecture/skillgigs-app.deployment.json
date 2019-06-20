@@ -1,60 +1,66 @@
 {
-    "kind": "Deployment",
-    "apiVersion": "extensions/v1beta1",
-    "metadata": {
-      "name": "skillgigs-app",
-      "labels": {
+  "kind": "Deployment",
+  "apiVersion": "extensions/v1beta1",
+  "metadata": {
+    "name": "skillgigs-app",
+    "labels": {
+      "k8s-app": "skillgigs-app"
+    }
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
         "k8s-app": "skillgigs-app"
       }
     },
-    "spec": {
-      "replicas": 1,
-      "selector": {
-        "matchLabels": {
+    "template": {
+      "metadata": {
+        "name": "skillgigs-app",
+        "labels": {
           "k8s-app": "skillgigs-app"
         }
       },
-      "template": {
-        "metadata": {
-          "name": "skillgigs-app",
-          "labels": {
-            "k8s-app": "skillgigs-app"
-          }
-        },
-        "spec": {
-          "containers": [
-            {
-              "name": "skillgigs-app",
-              "image": "sroye98/skillgigs-app:0.0.1",
-              "resources": {},
-              "terminationMessagePath": "/dev/termination-log",
-              "terminationMessagePolicy": "File",
-              "imagePullPolicy": "Always",
-              "securityContext": {
-                "privileged": false
+      "spec": {
+        "containers": [
+          {
+            "name": "skillgigs-app",
+            "image": "sroye98/skillgigs-app:0.0.1",
+            "env": [
+              {
+                "name": "ENVIRONMENT",
+                "value": "development"
               }
+            ],
+            "resources": {},
+            "terminationMessagePath": "/dev/termination-log",
+            "terminationMessagePolicy": "File",
+            "imagePullPolicy": "Always",
+            "securityContext": {
+              "privileged": false
             }
-          ],
-          "imagePullSecrets": [
-            {
-              "name": "skillgigstech"
-            }
-          ],
-          "restartPolicy": "Always",
-          "terminationGracePeriodSeconds": 30,
-          "dnsPolicy": "ClusterFirst",
-          "securityContext": {},
-          "schedulerName": "default-scheduler"
-        }
-      },
-      "strategy": {
-        "type": "RollingUpdate",
-        "rollingUpdate": {
-          "maxUnavailable": "25%",
-          "maxSurge": "25%"
-        }
-      },
-      "revisionHistoryLimit": 10,
-      "progressDeadlineSeconds": 600
-    }
+          }
+        ],
+        "imagePullSecrets": [
+          {
+            "name": "skillgigstech"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {},
+        "schedulerName": "default-scheduler"
+      }
+    },
+    "strategy": {
+      "type": "RollingUpdate",
+      "rollingUpdate": {
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      }
+    },
+    "revisionHistoryLimit": 10,
+    "progressDeadlineSeconds": 600
   }
+}

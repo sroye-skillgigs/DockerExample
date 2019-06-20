@@ -26,6 +26,12 @@
           {
             "name": "skillgigs-dataaccess",
             "image": "skillgigstech/skillgigs-dataaccess-api:v.0.0.0.1",
+            "env": [
+              {
+                "name": "ENVIRONMENT",
+                "value": "development"
+              }
+            ],
             "resources": {},
             "terminationMessagePath": "/dev/termination-log",
             "terminationMessagePolicy": "File",
